@@ -1,0 +1,14 @@
+.popular {
+    margin: 4rem 0rem;
+}
+
+.popCard {
+    min-height: 25rem;
+    border-radius: 2rem;
+    overflow: hidden;
+}
+
+.popCard img{
+    border-radius: 2rem;
+    
+}
