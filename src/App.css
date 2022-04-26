@@ -48,3 +48,25 @@
     justify-content: center;
     margin: 2rem 0rem;
 }
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 3rem;
+}
+
+.gridCard img{
+    width: 100%;
+    border-radius: 2rem;
+}
+
+.gridCard a{
+    text-decoration: none;
+}
+
+.gridCard h4{
+    text-align: center;
+    padding: 1rem;
+}
+
+
