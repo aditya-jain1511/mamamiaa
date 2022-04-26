@@ -2,26 +2,27 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { NavLink, useParams } from "react-router-dom";
 
-function Cuisine() {
-  const [cuisine, setCuisine] = useState([]);
+function Searched() {
+  const [searchedR, setSearchedR] = useState([]);
 
   let params = useParams();
 
   useEffect(() => {
-    getCuisine(params.type);
+    getSearchedR(params.search);
     console.log(params);
-  }, [params.type]);
+  }, [params.search]);
 
-  const getCuisine = async (name) => {
+  const getSearchedR = async (name) => {
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${name}`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}&number=10`
     );
     const recipes = await data.json();
 
-    setCuisine(recipes.results);
+    setSearchedR(recipes.results);
+    console.log(recipes)
   };
 
-  const cuisines = cuisine.map((item)=>{
+  const searches = searchedR.map((item)=>{
       return(
           <div className="gridCard" key={item.id}>
               <img src={item.image} alt={item.title}></img>
@@ -32,9 +33,9 @@ function Cuisine() {
 
   return (
     <div className="grid">
-        {cuisines}
+        {searches}
     </div>
     );
 }
 
-export default Cuisine;
+export default Searched;
