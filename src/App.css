@@ -69,4 +69,34 @@
     padding: 1rem;
 }
 
+.navLink{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    text-decoration: none;
+    background: linear-gradient(35deg, #494949, #313131);
+    width: 6rem;
+    height: 6rem;
+    cursor: pointer;
+    transform: scale(0.8);
+}
+
+.navLink h4{
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 100;
+}
+
+.navLink svg{
+    color: white;
+    font-size: 1.7rem;
+}
+
+.navLink-active{
+    background: linear-gradient(to right, #f27121, #e94057);
+}
 

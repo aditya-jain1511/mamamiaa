@@ -7,19 +7,19 @@ import React from "react";
 function Category() {
   return (
     <div className="categoryList">
-      <NavLink to={"/cuisine/italian"}>
+      <NavLink className={({ isActive }) => (isActive ? "navLink navLink-active" : "navLink")} to={"/cuisine/italian"}>
         <FaPizzaSlice />
         <h4>Italian</h4>
       </NavLink>
-      <NavLink to={"/cuisine/american"}>
+      <NavLink className={({ isActive }) => (isActive ? "navLink navLink-active" : "navLink")} to={"/cuisine/american"}>
         <FaHamburger />
         <h4>American</h4>
       </NavLink>
-      <NavLink to={"/cuisine/thai"}>
+      <NavLink className={({ isActive }) => (isActive ? "navLink navLink-active" : "navLink")} to={"/cuisine/thai"}>
         <GiNoodles />
         <h4>Thai</h4>
       </NavLink>
-      <NavLink to={"/cuisine/japanese"}>
+      <NavLink className={({ isActive }) => (isActive ? "navLink navLink-active" : "navLink")} to={"/cuisine/japanese"}>
         <GiChopsticks />
         <h4>Japanese</h4>
       </NavLink>
