@@ -1,15 +1,15 @@
-.popular {
+.popular , .veggie {
     margin: 4rem 0rem;
 }
 
-.popCard {
-    min-height: 25rem;
+.popCard , .vegCard {
+    min-height: 15rem;
     border-radius: 2rem;
     overflow: hidden;
     position: relative;
 }
 
-.popImg{
+.popImg , .vegImg{
     border-radius: 2rem;
     position: absolute;
     left: 0;
@@ -18,7 +18,7 @@
     object-fit: cover;
 }
 
-.popTitle{
+.popTitle , .vegTitle {
     position: absolute;
     z-index: 10;
     left: 50%;
