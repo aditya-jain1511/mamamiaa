@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { NavLink, useParams } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 
 function Cuisine() {
   const [cuisine, setCuisine] = useState([]);
@@ -24,8 +24,10 @@ function Cuisine() {
   const cuisines = cuisine.map((item)=>{
       return(
           <div className="gridCard" key={item.id}>
+            <Link to={'/recipe/'+ item.id}>
               <img src={item.image} alt={item.title}></img>
               <h4>{item.title}</h4>
+            </Link>
           </div>
       )
   })

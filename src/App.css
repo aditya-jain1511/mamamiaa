@@ -127,3 +127,39 @@
     transform: translate(100%,-50%);
     color: white;
 }
+
+.detailWrap{
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+    display: flex;
+}
+
+.detailWrap h2{
+    margin-bottom: 2rem;
+}
+
+.detailWrap li{
+    font-size: 1.2rem;
+    line-height: 2.5rem;
+}
+
+.detailWrap ul{
+    margin-top: 2rem;
+}
+
+.detailButton{
+    padding: 1rem 2rem;
+    color: #313131;
+    background-color: white;
+    border: 2px solid black;
+    margin-right: 2rem;
+    font-weight: 400;
+}
+.detailButton.active{
+    background: linear-gradient(35deg, #494949, #313131);
+    color: white;
+}
+
+.detailInfo{
+    margin-left: 10rem;
+}
