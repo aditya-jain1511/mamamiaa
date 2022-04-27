@@ -1,11 +1,14 @@
 import { FaPizzaSlice, FaHamburger } from "react-icons/fa";
 import { GiNoodles, GiChopsticks } from "react-icons/gi";
+import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 
 import React from "react";
 
 function Category() {
   return (
+    <motion.div animate={{opacity:1}} initial={{opacity:0}} exit={{opacity:0}} transition={{duration: 0.5}}>
+
     <div className="categoryList">
       <NavLink className={({ isActive }) => (isActive ? "navLink navLink-active" : "navLink")} to={"/cuisine/italian"}>
         <FaPizzaSlice />
@@ -24,6 +27,7 @@ function Category() {
         <h4>Japanese</h4>
       </NavLink>
     </div>
+    </motion.div>
   );
 }
 

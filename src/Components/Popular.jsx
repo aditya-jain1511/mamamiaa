@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import '@splidejs/splide/dist/css/splide.min.css';
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function Popular() {
   const [popular, setPopular] = useState([]);
@@ -44,6 +45,8 @@ export default function Popular() {
   });
 
   return (
+    <motion.div animate={{opacity:1}} initial={{opacity:0}} exit={{opacity:0}} transition={{duration: 0.5}}>
+
     <div className="popular" >
       <h3>Popular Picks:</h3>
       <Splide options={{
@@ -56,5 +59,6 @@ export default function Popular() {
         {popularDishes}
       </Splide>
     </div>
+    </motion.div>
   );
 }

@@ -1,14 +1,29 @@
+.logo{
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: 'Lobster two', cursive;
+}
+.logoNav{
+    padding: 4rem, 0rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.logoNav svg{
+    font-size: 2rem;
+}
+
+
 .popular , .veggie {
     margin: 4rem 0rem;
 }
-
 .popCard , .vegCard {
     min-height: 15rem;
     border-radius: 2rem;
     overflow: hidden;
     position: relative;
 }
-
 .popImg , .vegImg{
     border-radius: 2rem;
     position: absolute;
@@ -17,7 +32,6 @@
     height: 100%;
     object-fit: cover;
 }
-
 .popTitle , .vegTitle {
     position: absolute;
     z-index: 10;
@@ -34,7 +48,6 @@
     justify-content: center;
     align-items: center;
 }
-
 .gradient{
     z-index: 3;
     position: absolute;
@@ -43,31 +56,29 @@
     background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7));
 }
 
+
 .categoryList {
     display: flex;
     justify-content: center;
     margin: 2rem 0rem;
 }
-
 .grid{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     gap: 3rem;
 }
-
 .gridCard img{
     width: 100%;
     border-radius: 2rem;
 }
-
 .gridCard a{
     text-decoration: none;
 }
-
 .gridCard h4{
     text-align: center;
     padding: 1rem;
 }
+
 
 .navLink{
     display: flex;
@@ -84,31 +95,27 @@
     cursor: pointer;
     transform: scale(0.8);
 }
-
 .navLink h4{
     color: white;
     font-size: 0.9rem;
     font-weight: 100;
 }
-
 .navLink svg{
     color: white;
     font-size: 1.7rem;
 }
-
 .navLink-active, .navLink:hover {
     background: linear-gradient(to right, #f27121, #e94057);
 }
 
+
 .formStyle{
     margin: 0rem 20rem;
 }
-
 .formStyle div{
     position: relative;
     width: 100%;
 }
-
 .formStyle input{
     border: none;
     background: linear-gradient(35deg, #494949, #313131);
@@ -119,7 +126,6 @@
     outline: none;
     width: 100%;
 }
-
 .formStyle svg{
     position: absolute;
     top: 50%;
@@ -128,25 +134,22 @@
     color: white;
 }
 
+
 .detailWrap{
     margin-top: 10rem;
     margin-bottom: 5rem;
     display: flex;
 }
-
 .detailWrap h2{
     margin-bottom: 2rem;
 }
-
 .detailWrap li{
     font-size: 1.2rem;
     line-height: 2.5rem;
 }
-
 .detailWrap ul{
     margin-top: 2rem;
 }
-
 .detailButton{
     padding: 1rem 2rem;
     color: #313131;
@@ -159,7 +162,6 @@
     background: linear-gradient(35deg, #494949, #313131);
     color: white;
 }
-
 .detailInfo{
     margin-left: 10rem;
 }

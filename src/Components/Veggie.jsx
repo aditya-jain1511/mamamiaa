@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import '@splidejs/splide/dist/css/splide.min.css';
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function Veggie() {
   const [veggie, setVeggie] = useState([]);
@@ -45,6 +46,8 @@ export default function Veggie() {
   });
 
   return (
+    <motion.div animate={{opacity:1}} initial={{opacity:0}} exit={{opacity:0}} transition={{duration: 0.5}}>
+
     <div className="veggie" >
       <h3>Our Vegetarian Picks:</h3>
       <Splide options={{
@@ -57,5 +60,6 @@ export default function Veggie() {
         {veggieDishes}
       </Splide>
     </div>
+    </motion.div>
   );
 }
