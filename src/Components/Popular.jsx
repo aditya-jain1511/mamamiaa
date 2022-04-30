@@ -15,7 +15,7 @@ export default function Popular() {
     //adding fetched api call to local storage so we dont have to fetch it again and again from spoonacular if already present in browser cache
 
     // checking for items in local storage
-    const check = localStorage.getItem('popular')
+    const check = sessionStorage.getItem('popularpicks')
     if (check){
       setPopular(JSON.parse(check))
     }
@@ -24,7 +24,7 @@ export default function Popular() {
 
       const data = await api.json();
       //adding fetched api item to local storage of browser 
-      localStorage.setItem('popular',JSON.stringify(data.recipes))
+      sessionStorage.setItem('popularpicks',JSON.stringify(data.recipes))
       setPopular(data.recipes);
       console.log(data.recipes);    
     }
@@ -50,11 +50,22 @@ export default function Popular() {
     <div className="popular" >
       <h3>Popular Picks:</h3>
       <Splide options={{
-        perPage: 4,
-        arrows: false,
+        perPage: 5,
+        arrows: true,
         pagination: false,
         drag: 'free',
-        gap: '2rem'
+        gap: '2rem',
+        breakpoints: {
+          1920:{
+            perPage: 4,
+          },
+          1280: {
+            perPage: 2,
+          },
+          640:{
+            perPage: 1,
+          }
+        }
       }}>
         {popularDishes}
       </Splide>

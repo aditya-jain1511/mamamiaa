@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Link, NavLink, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function Searched() {
   const [searchedR, setSearchedR] = useState([]);
@@ -9,17 +9,23 @@ function Searched() {
 
   useEffect(() => {
     getSearchedR(params.search);
-    console.log(params);
   }, [params.search]);
 
   const getSearchedR = async (name) => {
-    const data = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}&number=10`
-    );
-    const recipes = await data.json();
 
-    setSearchedR(recipes.results);
-    console.log(recipes)
+    const check = sessionStorage.getItem(name)
+    if (check){
+      setSearchedR(JSON.parse(check))
+    }
+    else{
+      const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}&number=10`)
+
+      const recipe = await data.json();
+      setSearchedR(recipe.results)
+      console.log(recipe)
+      //adding fetched api item to local storage of browser 
+      sessionStorage.setItem(name,JSON.stringify(recipe.results))
+    }
   };
 
   const searches = searchedR.map((item)=>{

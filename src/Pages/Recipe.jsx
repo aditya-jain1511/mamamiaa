@@ -10,16 +10,25 @@ function Recipe() {
   let params = useParams();
 
   useEffect(()=>{
-    fetchDetails();
+    fetchDetails(params.name);
   },[params.name])
 
 
-  const fetchDetails = async() => {
-    const data = await fetch(`https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`)
+  const fetchDetails = async(name) => {
 
-    const recipe = await data.json();
-    setDetails(recipe)
-    console.log(recipe)
+    const check = sessionStorage.getItem(name)
+    if (check){
+      setDetails(JSON.parse(check))
+    }
+    else{
+      const data = await fetch(`https://api.spoonacular.com/recipes/${name}/information?apiKey=${process.env.REACT_APP_API_KEY}`)
+
+      const recipe = await data.json();
+      setDetails(recipe)
+      console.log(recipe)
+      //adding fetched api item to local storage of browser 
+      sessionStorage.setItem(name,JSON.stringify(recipe))
+    }
   }
 
   return (

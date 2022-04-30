@@ -15,14 +15,12 @@ function Search() {
 
     return (
         <motion.div animate={{opacity:1}} initial={{opacity:0}} exit={{opacity:0}} transition={{duration: 0.5}}>
-
-        <form className='formStyle' onSubmit={submitHandler}>
-            <div>
-                <FaSearch />
-                <input onChange={(e) => setInput(e.target.value)} type="text" value={input}/>
-                
-            </div>
-        </form>
+            <form className='formStyle' onSubmit={submitHandler}>
+                <div>
+                    <FaSearch />
+                    <input onChange={(e) => setInput(e.target.value)} type="text" value={input}/>
+                </div>
+            </form>
         </motion.div>
     )
 }
