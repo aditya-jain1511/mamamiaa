@@ -44,19 +44,16 @@ a {
   font-size: 2rem;
 }
 
-.popular,
-.veggie {
+.home {
   margin: 4rem 0rem;
 }
-.popCard,
-.vegCard {
+.homeCard {
   min-height: 15rem;
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
 }
-.popImg,
-.vegImg {
+.homeImg {
   border-radius: 2rem;
   position: absolute;
   left: 0;
@@ -64,8 +61,7 @@ a {
   height: 100%;
   object-fit: cover;
 }
-.popTitle,
-.vegTitle {
+.homeTitle {
   position: absolute;
   z-index: 10;
   left: 50%;

@@ -33,10 +33,10 @@ export default function Popular() {
   const popularDishes = popular.map((recipe) => {
     return (
       <SplideSlide key={recipe.id}>
-          <div className="popCard">
+          <div className="homeCard">
             <Link to={'/recipe/'+recipe.id}>
-              <p className="popTitle">{recipe.title}</p>
-              <img className="popImg" src={recipe.image} alt="{recipe.title}"></img>
+              <p className="homeTitle">{recipe.title}</p>
+              <img className="homeImg" src={recipe.image} alt="{recipe.title}"></img>
               <div className="gradient"></div>
             </Link>
           </div>
@@ -47,17 +47,17 @@ export default function Popular() {
   return (
     <motion.div animate={{opacity:1}} initial={{opacity:0}} exit={{opacity:0}} transition={{duration: 0.5}}>
 
-    <div className="popular" >
+    <div className="home" >
       <h3>Popular Picks:</h3>
       <Splide options={{
-        perPage: 5,
+        perPage: 4,
         arrows: true,
         pagination: false,
         drag: 'free',
         gap: '2rem',
         breakpoints: {
           1920:{
-            perPage: 4,
+            perPage: 3,
           },
           1280: {
             perPage: 2,

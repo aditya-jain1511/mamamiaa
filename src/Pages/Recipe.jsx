@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 function Recipe() {
   const [details, setDetails] = useState({});
-  const [activeT, setActiveT] = useState("summary");
+  const [activeT, setActiveT] = useState("instructions");
 
   let params = useParams();
 
