@@ -18,17 +18,27 @@ a {
   margin: 0vh 10vw;
 }
 
+
+.nav-bar{
+    background: white;
+    color: rgb(56,56,56);
+}
 .logo {
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: 400;
+  color: rgb(56, 56, 56);
   font-family: "Lobster two", cursive;
 }
+.logo:hover{
+  color: rgb(56, 56, 56);
+}
 .logoNav {
-  padding: 2rem 0rem;
+  padding: 5vh 0vw;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  color: rgb(56, 56, 56);
 }
 .logoNav svg {
   font-size: 2rem;
@@ -79,59 +89,61 @@ a {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
 }
 
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 3rem;
+}
+.gridCard img {
+    width: 100%;
+    border-radius: 2rem;
+}
+.gridCard a {
+    text-decoration: none;
+}
+.gridCard h4 {
+    text-align: center;
+    padding: 1rem;
+}
+
 .categoryList {
   display: flex;
   justify-content: center;
   margin: 2rem 0rem;
 }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  gap: 3rem;
-}
-.gridCard img {
-  width: 100%;
-  border-radius: 2rem;
-}
-.gridCard a {
-  text-decoration: none;
-}
-.gridCard h4 {
-  text-align: center;
-  padding: 1rem;
-}
-
-.navLink {
+.catLink {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+
   text-decoration: none;
   background: linear-gradient(35deg, #494949, #313131);
-  min-width: 5rem;
-  min-height: 5rem;
+  min-width: 6rem;
+  min-height: 6rem;
   cursor: pointer;
   transform: scale(0.8);
 }
-.navLink h4 {
+.catLink h4 {
   color: white;
   font-size: 0.9rem;
   font-weight: 100;
 }
-.navLink svg {
+.catLink svg {
   color: white;
   font-size: 1.7rem;
 }
-.navLink-active,
-.navLink:hover {
+.catLink.active,
+.catLink:hover {
   background: linear-gradient(to right, #f27121, #e94057);
+}
+.catlink2{
+    padding: 0;
 }
 
 .formStyle {
-  margin: 0 5vw;
+  margin: 0;
 }
 .formStyle div {
   position: relative;
@@ -140,9 +152,9 @@ a {
 .formStyle input {
   border: none;
   background: linear-gradient(35deg, #494949, #313131);
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: white;
-  padding: 1rem 3rem;
+  padding: 2vh 3rem;
   border-radius: 1rem;
   outline: none;
   width: 100%;
@@ -155,34 +167,24 @@ a {
   color: white;
 }
 
-.detailWrap {
-  margin-top: 5vh;
-  margin-bottom: 5vh;
-  display: flex;
-}
-.detailWrap h2 {
-  margin-bottom: 2rem;
-}
-.detailWrap li {
-  font-size: 1.2rem;
-  line-height: 2.5rem;
-}
-.detailWrap ul {
-  margin-top: 2rem;
-}
 .detailButton {
-  padding: 1rem 2rem;
-  width: auto;
+  padding: 10px;
+  width: 100%;
   color: #313131;
   background-color: white;
   border: 2px solid black;
-  margin-right: 2rem;
+  border-radius: 10px;
+  margin: 1vh 1vw 1vh 0;
   font-weight: 400;
 }
 .detailButton.active {
   background: linear-gradient(35deg, #494949, #313131);
   color: white;
 }
-.detailInfo {
-  margin-left: 10rem;
+
+.center{
+  text-align: center;
+}
+.recipeImg{
+  border-radius: 10px;
 }
