@@ -4,35 +4,36 @@ import { Link, useParams } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 function SeeMore() {
-  const [searchedR, setSearchedR] = useState([]);
+  const [seeMore, setSeeMore] = useState([]);
   const [hasMoreD, setHasMoreD] = useState(true);
 
   let params = useParams();
 
   useEffect(() => {
-    getSearchedR(params.tag,params.session);
+    getSeeMore(params.tag,params.session);
   }, [params.tag, params.session]);
 
-  const getSearchedR = async (tags,session) => {
-    const check = sessionStorage.getItem(session);
+  const getSeeMore = async (tags,session) => {
+    const check = sessionStorage.getItem(session +"seemore");
     if (check) {
-      setSearchedR(JSON.parse(check));
+      setSeeMore(JSON.parse(check));
     } else {
+      console.log("rerun")
       const data = await fetch(
         `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}${tags}`
       );
 
       const recipe = await data.json();
-      setSearchedR(recipe.recipes);
+      setSeeMore(recipe.recipes);
       console.log(recipe);
       //adding fetched api item to local storage of browser
-      sessionStorage.setItem(session, JSON.stringify(recipe.recipes));
+      sessionStorage.setItem(session +"seemore", JSON.stringify(recipe.recipes));
     }
   };
 
   const addDishes = async () => {
-    const check = sessionStorage.getItem(params.session);
-    var offset = JSON.parse(check).length;
+    const check = sessionStorage.getItem(params.session +"seemore");
+    var offset = (JSON.parse(check)?JSON.parse(check).length:0);
     const data = await fetch(
       `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}${params.tag}`
     );
@@ -41,15 +42,15 @@ function SeeMore() {
       setHasMoreD(false);
     } else {
       setTimeout(() => {
-        var all = [...searchedR, ...recipe.recipes];
+        var all = [...seeMore, ...recipe.recipes];
         console.log(all);
-        setSearchedR((searchedR) => [...searchedR, ...recipe.recipes]);
-        sessionStorage.setItem(params.session, JSON.stringify(all));
+        setSeeMore((seeMore) => [...seeMore, ...recipe.recipes]);
+        sessionStorage.setItem(params.session +"seemore", JSON.stringify(all));
       }, 2000);
     }
   };
 
-  const searches = searchedR.map((item) => {
+  const searches = seeMore.map((item) => {
     return (
       <div className="gridCard" key={item.id + new Date().getTime()}>
         <Link to={"/recipe/" + item.id}>
@@ -69,8 +70,8 @@ function SeeMore() {
     >
       <InfiniteScroll
         dataLength={
-          JSON.parse(sessionStorage.getItem(params.session))
-            ? JSON.parse(sessionStorage.getItem(params.session)).length
+          JSON.parse(sessionStorage.getItem(params.session +"seemore"))
+            ? JSON.parse(sessionStorage.getItem(params.session +"seemore")).length
             : 0
         }
         next={addDishes}
