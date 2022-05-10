@@ -32,7 +32,7 @@ export default function Vegan() {
 
   const veganDishes = vegan.map((recipe) => {
     return (
-      <SplideSlide key={recipe.id}>
+      <SplideSlide key={recipe.id + new Date().getTime()}>
           <div className="homeCard">
             <Link to={'/recipe/'+recipe.id}>
               <p className="homeTitle">{recipe.title}</p>
@@ -68,6 +68,13 @@ export default function Vegan() {
         }
       }}>
         {veganDishes}
+        <SplideSlide>
+        <Link to={'/seemore/&number=10&tags=vegan/veganpicks'}>
+            <div className="homeCard seeMore">
+              <p className="seeMoreTitle">See More</p>
+            </div>
+            </Link>
+          </SplideSlide>
       </Splide>
     </div>
     </motion.div>

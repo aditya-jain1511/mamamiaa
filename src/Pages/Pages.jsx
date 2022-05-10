@@ -1,6 +1,7 @@
 import React from 'react'
 import Home from './Home'
 import Cuisine from './Cuisine';
+import SeeMore from './SeeMore';
 import Recipe from './Recipe';
 import Contact from './Contact';
 import Category from '../Components/Category';
@@ -29,6 +30,7 @@ function Pages() {
             <Route path='/home' element={<Home/>} />
             <Route path='/contact' element={<Contact/>} />
             <Route path='/cuisine/:type' element={<Cuisine/>} />
+            <Route path='/seemore/:tag/:session' element={<SeeMore/>} />
             <Route path='/searched/:search' element = {<Searched/>} />
             <Route path='/recipe/:name' element = {<Recipe/>} />
             <Route path="*" element={<Navigate replace to="/home" />} />

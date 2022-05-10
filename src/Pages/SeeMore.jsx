@@ -3,52 +3,53 @@ import { motion } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-function Cuisine() {
-  const [cuisine, setCuisine] = useState([]);
+function SeeMore() {
+  const [searchedR, setSearchedR] = useState([]);
   const [hasMoreD, setHasMoreD] = useState(true);
 
   let params = useParams();
-  useEffect(() => {
-    getCuisine(params.type);
-  }, [params.type]);
 
-  const getCuisine = async (type) => {
-    const check = sessionStorage.getItem(type + "cuisine");
+  useEffect(() => {
+    getSearchedR(params.tag,params.session);
+  }, [params.tag, params.session]);
+
+  const getSearchedR = async (tags,session) => {
+    const check = sessionStorage.getItem(session);
     if (check) {
-      setCuisine(JSON.parse(check));
+      setSearchedR(JSON.parse(check));
     } else {
       const data = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${type}`
+        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}${tags}`
       );
 
       const recipe = await data.json();
-      setCuisine(recipe.results);
+      setSearchedR(recipe.recipes);
       console.log(recipe);
       //adding fetched api item to local storage of browser
-      sessionStorage.setItem(type + "cuisine", JSON.stringify(recipe.results));
+      sessionStorage.setItem(session, JSON.stringify(recipe.recipes));
     }
   };
 
   const addDishes = async () => {
-    const check = sessionStorage.getItem(params.type + "cuisine");
+    const check = sessionStorage.getItem(params.session);
     var offset = JSON.parse(check).length;
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${params.type}&offset=${offset}`
+      `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}${params.tag}`
     );
     const recipe = await data.json();
-    if (offset >= recipe.totalResults) {
+    if (offset >= 200) {
       setHasMoreD(false);
     } else {
       setTimeout(() => {
-        var all = [...cuisine, ...recipe.results];
+        var all = [...searchedR, ...recipe.recipes];
         console.log(all);
-        setCuisine((cuisine) => [...cuisine, ...recipe.results]);
-        sessionStorage.setItem(params.type + "cuisine", JSON.stringify(all));
+        setSearchedR((searchedR) => [...searchedR, ...recipe.recipes]);
+        sessionStorage.setItem(params.session, JSON.stringify(all));
       }, 2000);
     }
   };
 
-  const cuisines = cuisine.map((item) => {
+  const searches = searchedR.map((item) => {
     return (
       <div className="gridCard" key={item.id + new Date().getTime()}>
         <Link to={"/recipe/" + item.id}>
@@ -68,8 +69,8 @@ function Cuisine() {
     >
       <InfiniteScroll
         dataLength={
-          JSON.parse(sessionStorage.getItem(params.type + "cuisine"))
-            ? JSON.parse(sessionStorage.getItem(params.type + "cuisine")).length
+          JSON.parse(sessionStorage.getItem(params.session))
+            ? JSON.parse(sessionStorage.getItem(params.session)).length
             : 0
         }
         next={addDishes}
@@ -100,7 +101,7 @@ function Cuisine() {
           </div>
         }
       >
-        <div className="grid">{cuisines}</div>
+        <div className="grid">{searches}</div>
       </InfiniteScroll>
       <div className="col-12" style={{ textAlign: "center" }}>
         <button onClick={addDishes}>
@@ -111,4 +112,4 @@ function Cuisine() {
   );
 }
 
-export default Cuisine;
+export default SeeMore;

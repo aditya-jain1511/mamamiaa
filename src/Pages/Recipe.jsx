@@ -43,7 +43,7 @@ function Recipe() {
               <h2>{details.title}</h2>
             </div>
             <div className="col-12 center">
-              <img src={details.image} class="img-fluid recipeImg" alt="details.id"></img>
+              <img src={details.image} className="img-fluid recipeImg" alt="details.id"></img>
             </div>
           </div>
         </motion.div>
