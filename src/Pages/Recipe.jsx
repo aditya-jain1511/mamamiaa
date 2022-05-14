@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 function Recipe() {
   const [details, setDetails] = useState({});
   const [activeT, setActiveT] = useState("instructions");
+  const [fav,setFav] = useState(false);
 
   let params = useParams();
 
@@ -29,6 +30,58 @@ function Recipe() {
     }
   };
 
+  const addfav = () => {
+    let check = JSON.parse(sessionStorage.getItem(params.name));
+    check.favorite = true;
+    var favor = localStorage.getItem('favorite');
+    if (favor) {
+      var favs =  JSON.parse(favor);
+      favs = [...favs, check]
+      localStorage.setItem('favorite', JSON.stringify(favs));
+    }
+    else{
+      const arr = [check]
+      localStorage.setItem('favorite', [JSON.stringify(arr)]);
+    }
+    console.log(check);
+    setFav(!fav);
+  }; 
+  
+  const remfav = () => {
+    const favor = JSON.parse(localStorage.getItem('favorite'));
+    favor.splice(favor.findIndex(e => (e.id).toString() === (params.name).toString()) , 1)
+    console.log(favor)
+    localStorage.setItem('favorite', JSON.stringify(favor))
+    setFav(!fav);
+  };
+
+  const favorite = () => {
+    const check = JSON.parse(localStorage.getItem('favorite'));
+    if (check && check.filter(e => (e.id).toString() === (params.name).toString()).length > 0) {
+      return (
+        <button
+          className="detailButton active"
+          onClick={() => {
+            remfav();
+          }}
+        >
+          Remove from Favorites
+        </button>
+      );
+    } else {
+      return (
+        <button
+          className="detailButton"
+          onClick={() => {
+            addfav();
+          }}
+        >
+          Add to Favorites
+        </button>
+      );
+    }
+  };
+
   return (
     <>
       <div className="col-12 col-lg-6">
@@ -43,7 +96,11 @@ function Recipe() {
               <h2>{details.title}</h2>
             </div>
             <div className="col-12 center">
-              <img src={details.image} className="img-fluid recipeImg" alt="details.id"></img>
+              <img
+                src={details.image}
+                className="img-fluid recipeImg"
+                alt="details.id"
+              ></img>
             </div>
           </div>
         </motion.div>
@@ -127,6 +184,7 @@ function Recipe() {
                 </ul>
               )}
             </div>
+            <div className="col-12 " id='favButton'>{favorite()}</div>
           </div>
         </motion.div>
       </div>

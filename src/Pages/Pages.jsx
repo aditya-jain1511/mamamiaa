@@ -4,6 +4,7 @@ import Cuisine from './Cuisine';
 import SeeMore from './SeeMore';
 import Recipe from './Recipe';
 import Contact from './Contact';
+import Favorite from './Favorite';
 import Category from '../Components/Category';
 import Search from '../Components/Search';
 import Logo from '../Components/Logo';
@@ -29,6 +30,7 @@ function Pages() {
           <Routes location={location} key={location.pathname}>
             <Route path='/home' element={<Home/>} />
             <Route path='/contact' element={<Contact/>} />
+            <Route path='/favorite' element={<Favorite/>} />
             <Route path='/cuisine/:type' element={<Cuisine/>} />
             <Route path='/seemore/:tag/:session' element={<SeeMore/>} />
             <Route path='/searched/:search' element = {<Searched/>} />

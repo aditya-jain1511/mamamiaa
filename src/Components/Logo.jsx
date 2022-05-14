@@ -23,6 +23,9 @@ function Logo() {
         <Collapse isOpen={isNavOpen} navbar>
           <Nav className="ms-auto" navbar>
             <NavItem>
+              <Link className='nav-link' to="/favorite">Favorites</Link>
+            </NavItem>
+            <NavItem>
               <Link className='nav-link' to="/contact">Contact</Link>
             </NavItem>
             <NavItem>

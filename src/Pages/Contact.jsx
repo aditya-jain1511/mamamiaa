@@ -9,8 +9,6 @@ const serviceID = `${process.env.REACT_APP_EMAIL_SERVICE_ID}`;
 const templateID= `${process.env.REACT_APP_EMAIL_TEMPLATE_ID}`;
 const userID= `${process.env.REACT_APP_EMAIL_USER_ID}`;
 
-console.log(serviceID, templateID, userID)
-
 const validateForm = (errors) => {
   let valid = true;
   Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
