@@ -16,7 +16,7 @@ function Logo() {
         <div className="logoNav">
           <GiKnifeFork />
           <Link to={"/home"} className="logo">
-            MaMaMia
+            MaMaMiaaa
           </Link>
         </div>
         <NavbarToggler onClick={toggleNav} />
