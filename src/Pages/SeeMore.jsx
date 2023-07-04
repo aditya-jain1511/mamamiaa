@@ -20,7 +20,7 @@ function SeeMore() {
     } else {
       console.log("rerun")
       const data = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}${tags}`
+        `https://api.spoonacular.com/recipes/random?apiKey=642b89fe5cf64cb7b5da7a6c57b6eab4${tags}`
       );
 
       const recipe = await data.json();
@@ -35,7 +35,7 @@ function SeeMore() {
     const check = sessionStorage.getItem(params.session +"seemore");
     var offset = (JSON.parse(check)?JSON.parse(check).length:0);
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}${params.tag}`
+      `https://api.spoonacular.com/recipes/random?apiKey=642b89fe5cf64cb7b5da7a6c57b6eab4${params.tag}`
     );
     const recipe = await data.json();
     if (offset >= 200) {
