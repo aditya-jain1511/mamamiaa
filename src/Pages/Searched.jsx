@@ -19,7 +19,7 @@ function Searched() {
       setSearchedR(JSON.parse(check));
     } else {
       const data = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}&number=10`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=642b89fe5cf64cb7b5da7a6c57b6eab4&query=${name}&number=10`
       );
 
       const recipe = await data.json();
@@ -34,7 +34,7 @@ function Searched() {
     const check = sessionStorage.getItem("Search" + params.search);
     var offset = JSON.parse(check).length;
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${params.search}&number=10&offset=${offset}`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=642b89fe5cf64cb7b5da7a6c57b6eab4&query=${params.search}&number=10&offset=${offset}`
     );
     const recipe = await data.json();
     if (offset >= recipe.totalResults) {
