@@ -20,7 +20,7 @@ export default function Eggie() {
       setEggie(JSON.parse(check));
     } else {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=10&tags=vegetarian`
+        `https://api.spoonacular.com/recipes/random?apiKey=642b89fe5cf64cb7b5da7a6c57b6eab4&number=10&tags=vegetarian`
       );
 
       const data = await api.json();
