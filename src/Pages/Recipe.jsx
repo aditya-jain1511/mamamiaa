@@ -19,7 +19,7 @@ function Recipe() {
       setDetails(JSON.parse(check));
     } else {
       const data = await fetch(
-        `https://api.spoonacular.com/recipes/${name}/information?apiKey=${process.env.REACT_APP_API_KEY}`
+        `https://api.spoonacular.com/recipes/${name}/information?apiKey=642b89fe5cf64cb7b5da7a6c57b6eab4`
       );
 
       const recipe = await data.json();
