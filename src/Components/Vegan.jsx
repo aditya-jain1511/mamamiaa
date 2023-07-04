@@ -20,7 +20,7 @@ export default function Vegan() {
       setVegan(JSON.parse(check))
     }
     else{
-      const api = await fetch( `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=10&tags=vegan`);
+      const api = await fetch( `https://api.spoonacular.com/recipes/random?apiKey=642b89fe5cf64cb7b5da7a6c57b6eab4&number=10&tags=vegan`);
 
       const data = await api.json();
       //adding fetched api item to local storage of browser 
