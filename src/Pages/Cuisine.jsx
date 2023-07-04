@@ -18,7 +18,7 @@ function Cuisine() {
       setCuisine(JSON.parse(check));
     } else {
       const data = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${type}`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=642b89fe5cf64cb7b5da7a6c57b6eab4&cuisine=${type}`
       );
 
       const recipe = await data.json();
@@ -33,7 +33,7 @@ function Cuisine() {
     const check = sessionStorage.getItem(params.type + "cuisine");
     var offset = JSON.parse(check).length;
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${params.type}&offset=${offset}`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=642b89fe5cf64cb7b5da7a6c57b6eab4&cuisine=${params.type}&offset=${offset}`
     );
     const recipe = await data.json();
     if (offset >= recipe.totalResults) {
